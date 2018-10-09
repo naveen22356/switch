@@ -1,0 +1,185 @@
+<html>
+	<head>
+		<style type="text/css">
+			*, *:before, *:after {
+			  box-sizing: border-box;
+			  margin: 0;
+			  padding: 0;
+			}
+			body {
+			  background: #24282c;
+			}
+			.switch {
+			  position: absolute;
+			  left: 50%;
+			  top: 50%;
+			  width: 140px;
+			  height: 60px;
+			  margin-left: -70px;
+			  margin-top: -30px;
+			  border-radius: 50px;
+			  background: #cfcfcf;
+			}
+			.switch:before {
+			  content: "";
+			  z-index: -1;
+			  position: absolute;
+			  left: -5px;
+			  top: -5px;
+			  width: 150px;
+			  height: 70px;
+			  border-radius: 55px;
+			  background: #314239;
+			  transition: background-color 0.3s;
+			}
+			.switch:hover:before {
+			  background: #4c735f;
+			}
+			.switch__checkbox {
+			  z-index: -10;
+			  position: absolute;
+			  left: 0;
+			  top: 0;
+			  opacity: 0;
+			}
+			.switch__label {
+			  z-index: 1;
+			  overflow: hidden;
+			  position: absolute;
+			  width: 100%;
+			  height: 100%;
+			  border-radius: 50px;
+			  cursor: pointer;
+			}
+			.switch__bg {
+			  position: absolute;
+			  left: 0;
+			  top: 0;
+			  width: 840px;
+			  height: 100%;
+			  background: linear-gradient(90deg, #14dcd6 0, #10e7bd 280px, #ef9c29 560px, #e76339 100%);
+			  transition: transform 0.5s;
+			  transform: translate3d(-560px, 0, 0);
+			}
+			.switch__checkbox:checked ~ .switch__label .switch__bg {
+			  transform: translate3d(0, 0, 0);
+			}
+			.switch__dot {
+			  position: absolute;
+			  left: 160px;
+			  top: 50%;
+			  width: 8px;
+			  height: 8px;
+			  margin-left: -4px;
+			  margin-top: -4px;
+			  border-radius: 50%;
+			  background: #fff;
+			  transition: transform 0.5s;
+			  transform: translate3d(0, 0, 0);
+			}
+			.switch__checkbox:checked ~ .switch__label .switch__dot {
+			  transform: translate3d(-125px, 0, 0);
+			}
+			.switch__on {
+			  position: absolute;
+			  left: 150px;
+			  top: 16px;
+			  width: 15px;
+			  height: 30px;
+			  transition: transform 0.5s;
+			  transform: translate3d(0, 0, 0);
+			}
+			.switch__checkbox:checked ~ .switch__label .switch__on {
+			  transform: translate3d(-125px, 0, 0);
+			}
+			.switch__on__inner {
+			  position: absolute;
+			  width: 100%;
+			  height: 100%;
+			  transition: transform 0.25s 0s cubic-bezier(0.52, -0.96, 0.51, 1.28);
+			  transform-origin: 100% 50%;
+			  transform: rotate(45deg) scale(0) translateZ(0);
+			}
+			.switch__checkbox:checked ~ .switch__label .switch__on__inner {
+			  transition: transform 0.25s 0.25s cubic-bezier(0.67, -0.16, 0.47, 1.61);
+			  transform: rotate(45deg) scale(1) translateZ(0);
+			}
+			.switch__on__inner:before, .switch__on__inner:after {
+			  content: "";
+			  position: absolute;
+			  border-radius: 4px;
+			  background: #fff;
+			}
+			.switch__on__inner:before {
+			  left: 0;
+			  bottom: 0;
+			  width: 100%;
+			  height: 9px;
+			}
+			.switch__on__inner:after {
+			  right: 0;
+			  top: 0;
+			  width: 9px;
+			  height: 100%;
+			}
+			.switch__off {
+			  position: absolute;
+			  left: 100px;
+			  top: 50%;
+			  width: 32px;
+			  height: 32px;
+			  margin-left: -16px;
+			  margin-top: -16px;
+			  transition: transform 0.5s;
+			  transform: translate3d(0, 0, 0);
+			}
+			.switch__checkbox:checked ~ .switch__label .switch__off {
+			  transform: translate3d(-125px, 0, 0);
+			}
+			.switch__off:before, .switch__off:after {
+			  content: "";
+			  position: absolute;
+			  left: 0;
+			  top: 50%;
+			  width: 100%;
+			  height: 8px;
+			  margin-top: -4px;
+			  border-radius: 4px;
+			  background: #fff;
+			  transition: transform 0.25s 0.25s;
+			}
+			.switch__checkbox:checked ~ .switch__label .switch__off:before, .switch__checkbox:checked ~ .switch__label .switch__off:after {
+			  transition-delay: 0s;
+			}
+			.switch__off:before {
+			  transform: rotate(45deg) scaleX(1) translateZ(0);
+			}
+			.switch__checkbox:checked ~ .switch__label .switch__off:before {
+			  transform: rotate(45deg) scaleX(0) translateZ(0);
+			}
+			.switch__off:after {
+			  transition-timing-function: cubic-bezier(0.67, -0.16, 0.47, 1.61);
+			  transform: rotate(-45deg) scaleX(1) translateZ(0);
+			}
+			.switch__checkbox:checked ~ .switch__label .switch__off:after {
+			  transition-timing-function: ease;
+			  transform: rotate(-45deg) scaleX(0) translateZ(0);
+			}
+
+		</style>
+	</head>
+
+	<body>
+		<div class="switch">
+		  <input type="checkbox" class="switch__checkbox" id="switch-cb" />
+		  <label class="switch__label" for="switch-cb">
+		    <span class="switch__bg"></span>
+		    
+		    <span class="switch__on">
+		      <span class="switch__on__inner"></span>
+		    </span>
+		    <span class="switch__off"></span>
+		  </label>
+		</div>
+	</body>
+</html>
